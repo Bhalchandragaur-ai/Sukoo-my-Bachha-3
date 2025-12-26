@@ -18,17 +18,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            padding: 20px;
+            overflow-y: auto;
         }
         
         .container {
             text-align: center;
-            padding: 40px;
+            padding: 40px 30px;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-width: 500px;
+            width: 100%;
             animation: fadeIn 1s ease-in;
+            margin: 20px auto;
         }
         
         @keyframes fadeIn {
@@ -39,12 +42,12 @@
         h1 {
             color: #764ba2;
             margin-bottom: 20px;
-            font-size: 2.5em;
+            font-size: 2em;
         }
         
         .message {
             color: #333;
-            font-size: 1.2em;
+            font-size: 1.1em;
             line-height: 1.6;
             margin: 20px 0;
         }
@@ -75,7 +78,7 @@
             transition: transform 0.3s;
         }
         
-        .button:hover {
+        .button:hover, .button:active {
             transform: scale(1.1);
         }
         
@@ -103,6 +106,7 @@
             pointer-events: none;
             top: 0;
             left: 0;
+            z-index: 0;
         }
         
         .floating-heart {
@@ -124,6 +128,18 @@
             100% {
                 transform: translateY(-100vh) rotate(360deg);
                 opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .message {
+                font-size: 1em;
+            }
+            .container {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -148,9 +164,11 @@
             <p style="color: #2d3436; font-size: 1.1em; line-height: 1.8;">
                 Sukoo, tumhare bina mera din adhoora hai...<br>
                 Tumhari smile meri khushi hai...<br>
-                Tumhara pain mera pain hai...<br><br>
+                Tumhara pain mera pain hai...<br><br> 
+                Apna matha idhr kro........ uuuuuuummmaahhh❤️<br><br> 
                 Main chahta hoon ki meri Sukoo jaldi se theek ho jaye! 💪<br>
-                You're the strongest person I know! 🌸<br>💝<br><br>
+                You're the strongest person I know! 🌸<br>
+                💝<br><br>
                 I LOVE YOU SO MUCH SUKOO! ❤️❤️❤️<br>
                 <small style="color: #636e72;">- Your Long Distance Boyfriend Aaru misses his Sukoo so much! 🥺</small>
             </p>
@@ -161,6 +179,14 @@
         function showMessage() {
             document.getElementById('specialMessage').classList.remove('hidden');
             createFloatingHearts();
+            
+            // Smooth scroll to message on mobile
+            setTimeout(() => {
+                document.getElementById('specialMessage').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }, 100);
         }
         
         function createFloatingHearts() {
