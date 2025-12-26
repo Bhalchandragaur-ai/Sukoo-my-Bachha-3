@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Sukoo ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        h1 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .message {
+            color: #333;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+        
+        .heart {
+            font-size: 3em;
+            color: #e74c3c;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .button:hover {
+            transform: scale(1.1);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .special-message {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            animation: slideIn 0.5s ease-in;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: #e74c3c;
+            font-size: 2em;
+            animation: float 6s infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <div class="container">
+        <h1>Meri Sukoo ❤️</h1>
+        
+        <div class="heart">💖</div>
+        
+        <div class="message">
+            <p>Sukoo, I know you're not feeling well right now...</p>
+            <p>But I want you to know something special!</p>
+        </div>
+        
+        <button class="button" onclick="showMessage()">Click Me Sukoo! 💝</button>
+        
+        <div id="specialMessage" class="special-message hidden">
+            <h2 style="color: #d63031; margin-bottom: 15px;">Sukoo, You Are My Everything! 🌟</h2>
+            <p style="color: #2d3436; font-size: 1.1em; line-height: 1.8;">
+                Sukoo, tumhare bina mera din adhoora hai...<br>
+                Tumhari smile meri khushi hai...<br>
+                Tumhara pain mera pain hai...<br><br>
+                Main chahta hoon ki meri Sukoo jaldi se theek ho jao! 💪<br>
+                You're the strongest person I know! 🌸<br>
+                PCOD bhi tumhe haar nahi sakta! 💝<br><br>
+                I LOVE YOU SO MUCH SUKOO! ❤️❤️❤️<br>
+                <small style="color: #636e72;">- Your Long Distance Boyfriend who misses his Sukoo so much! 🥺</small>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        function showMessage() {
+            document.getElementById('specialMessage').classList.remove('hidden');
+            createFloatingHearts();
+        }
+        
+        function createFloatingHearts() {
+            const container = document.getElementById('hearts');
+            for(let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                    container.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 7000);
+                }, i * 200);
+            }
+        }
+    </script>
+</body>
+</html>
